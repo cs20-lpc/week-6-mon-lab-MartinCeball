@@ -33,3 +33,22 @@ int main() {
     // terminate
     return 0;
 }
+
+void towerHanoi(int numDisks, string source, string buffer, string target, int& numMoves)
+{
+    if (numDisks > 0)
+    {
+        // Step 1: Move n-1 disks from the source to the buffer rod,
+        // using the target rod as the auxiliary.
+        towerHanoi(numDisks - 1, source, target, buffer, numMoves);
+
+        // Step 2: Move the nth (largest) disk from the source to the target rod.
+        cout << "Moving disc " << numDisks << " from " << source << " to " << target << endl;
+        numMoves++;
+
+        // Step 3: Move the n-1 disks from the buffer to the target rod,
+        // using the source rod as the auxiliary.
+        towerHanoi(numDisks - 1, buffer, source, target, numMoves);
+    }
+}
+
