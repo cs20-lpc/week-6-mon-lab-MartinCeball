@@ -62,3 +62,28 @@ int main() {
     // terminate
     return 0;
 }
+
+
+template <typename T>
+T findMaxRecTail(const T arr[], const int SIZE, int i)
+{
+    // Base case: If we are at the last element, it is the maximum
+    // of the subarray containing only that element.
+    if (i == SIZE - 1)
+    {
+        return arr[i];
+    }
+
+    // Find the maximum value in the rest of the array (the "tail")
+    T maxOfRest = findMaxRecTail(arr, SIZE, i + 1);
+
+    // Compare the current element with the maximum of the rest and return the larger one.
+    if (arr[i] > maxOfRest)
+    {
+        return arr[i];
+    }
+    else
+    {
+        return maxOfRest;
+    }
+}
